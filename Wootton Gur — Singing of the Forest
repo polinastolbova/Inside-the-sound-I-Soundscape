@@ -1,0 +1,59 @@
+«Wootton Gur» — «Singing of the Forest»
+<CsoundSynthesizer>
+<CsOptions>
+-odac
+</CsOptions>
+<CsInstruments>
+sr = 44100
+nchnls = 2
+0dbfs = 1
+
+; Owl — pure and smooth sound
+instr 1
+aHit oscili 0.3, 140
+aEnv linen 0.8, 0.01, p3, 0.1
+outs aHit * aEnv, aHit * aEnv
+endin
+
+; Tone — breathing of space
+instr 2
+aTone oscili 0.2, 150
+aEnv linen 1, 2, p3, 2
+outs aTone * aEnv, aTone * aEnv
+endin
+
+; Nightingale — chirp with envelope
+instr 3
+aBird oscili 0.2, 1600
+aEnv linen 1, 0.2, p3, 0.2
+outs aBird * aEnv, aBird * aEnv
+endin
+</CsInstruments>
+
+<CsScore>
+f 0 60
+
+; Beats — 12 times, every 5 sec
+i1 5 0.5
+i1 10 0.6
+i1 15 0.3
+i1 20 0.3
+i1 25 0.3
+i1 30 0.3
+i1 35 0.3
+i1 40 0.3
+i1 45 0.3
+i1 50 0.3
+i1 55 0.3
+
+; Tone - Breath for 60 sec
+i2 0 60
+
+; Bird - Short Phrases
+i3 6 1.2
+i3 18 1.5
+i3 30 1.2
+i3 42 1.5
+i3 54 1.2
+</CsScore>
+</CsoundSynthesizer>
