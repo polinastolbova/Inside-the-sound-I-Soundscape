@@ -1,0 +1,60 @@
+Vu'em kyl -River Voice
+<CsoundSynthesizer>
+<CsOptions>
+-odac
+</CsOptions>
+<CsInstruments>
+sr=44100
+nchnls=2
+0dbfs=1
+
+; === Water Noise - Base ===
+instr 1
+aNoise randh 0.6, 4
+aFilt tone aNoise, 700
+aEnv linen 1, 2, p3, 2
+outs aFilt * aEnv, aFilt * aEnv
+endin
+
+; === Drops - Upper Case Clicks ===
+instr 2
+aDrop poscil 0.25, 1600
+aEnv linseg 0, 0.02, 1, 0.1, 0
+outs aDrop * aEnv, aDrop * aEnv
+endin
+
+; === Ripples - smooth waves ===
+instr 3
+aSwirl poscil 0.15, 400
+aEnv linen 1, 1.5, p3, 1.5
+outs aSwirl * aEnv, aSwirl * aEnv
+endin
+</CsInstruments>
+
+<CsScore>
+f 0 60
+
+; === Water flow - background noise ===
+i1 0 60
+
+; === Ripples - waves in the middle of the flow ===
+i3 5 10
+i3 20 10
+i3 35 10
+i3 50 10
+
+; === Drops - rhythmic splashes ===
+i2 6 0.2
+i2 9 0.2
+i2 13 0.2
+i2 17 0.2
+i2 22 0.2
+i2 27 0.2
+i2 32 0.2
+i2 37 0.2
+i2 42 0.2
+i2 48 0.2
+i2 54 0.2
+i2 58 0.2
+</CsScore>
+</CsoundSynthesizer>
