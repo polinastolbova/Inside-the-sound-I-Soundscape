@@ -1,0 +1,50 @@
+Vueny badym - Water Worship
+<CsoundSynthesizer>
+<CsOptions>
+-odac
+</CsOptions>
+<CsInstruments>
+sr=44100
+nchnls=2
+0dbfs=1
+
+; --- Water Flow ---
+instr 1
+aNoise randh 0.5, 3
+aFilt tone aNoise, 700
+aEnv linen 1, 2, p3, 2
+outs aFilt * aEnv, aFilt * aEnv
+endin
+
+; --- Waves ---
+instr 2
+aSwirl poscil 0.2, 420
+aEnv linen 1, 1.5, p3, 1.5
+outs aSwirl * aEnv, aSwirl * aEnv
+endin
+
+; --- Wind - wide noise with movement ---
+instr 3
+aWind randh 0.3, 1.5 ; slower noise
+aFilt tone aWind, 600 ; softly filtered
+aEnv linen 1, 2, p3, 2
+outs aFilt * aEnv, aFilt * aEnv
+endin
+</CsInstruments>
+
+<CsScore>
+f 0 60
+
+; Flow
+i1 0 60
+
+; Waves
+i2 5 15
+i2 25 15
+i2 45 15
+
+; Wind
+i3 0 60
+
+</CsScore>
+</CsoundSynthesizer>
